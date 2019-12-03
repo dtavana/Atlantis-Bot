@@ -1,3 +1,5 @@
+import {AkairoClient} from 'discord-akairo';
+
 export const MESSAGES = {
     COMMAND_HANDLER: {
         PROMPT: {
@@ -8,6 +10,10 @@ export const MESSAGES = {
             CANCEL: 'The command has been cancelled.',
         },
         LOADED: 'Command Handler has been loaded!',
+    },
+    EVENTS: {
+        // @ts-ignore
+        READY: (client: AkairoClient) => `Now logged in as ${client.user.tag} (${client.user.id}). Serving ${client.users.size} users.`,
     },
     INHIBITOR_HANDLER: {
         LOADED: 'Inhibitor Handler has been loaded!',
@@ -20,6 +26,18 @@ export const MESSAGES = {
     },
 };
 
-export const SETTINGS = {
-    BLACKLIST: 'blacklist',
+export const COMMAND_CATEGORIES = {
+    MOD: 'mod',
+    MISC: 'misc',
+};
+
+export const ROLE_IDS = {
+    MOD: '651499746409578496',
+};
+
+export const CLIENT_OPTIONS = {
+    DEFAULT_PREFIX: 'a!',
+    OWNERS: [
+        '112762841173368832',
+    ],
 };

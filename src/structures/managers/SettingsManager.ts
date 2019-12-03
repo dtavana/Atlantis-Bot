@@ -1,6 +1,6 @@
-import { Provider } from 'discord-akairo';
-import { Guild } from 'discord.js';
-import { MESSAGES } from '../../lib/constants';
+import {Provider} from 'discord-akairo';
+import {Guild} from 'discord.js';
+import {MESSAGES} from '../../lib/constants';
 import AtlantisClient from '../client/AtlantisClient';
 
 export default class SettingsManager extends Provider {
@@ -21,6 +21,7 @@ export default class SettingsManager extends Provider {
 
     public async init(): Promise<void> {
         this.client.sendLog(MESSAGES.SETTINGS_MANAGER.LOADED);
+        // Need to cache settings here
     }
 
     public async clear(guild: string | Guild): Promise<void> {

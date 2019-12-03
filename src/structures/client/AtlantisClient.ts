@@ -1,10 +1,11 @@
-import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from 'discord-akairo';
-import { join } from 'path';
-import { MESSAGES } from '../../lib/constants';
+import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from 'discord-akairo';
+import {join} from 'path';
+import {MESSAGES} from '../../lib/constants';
+import {CLIENT_OPTIONS} from '../../lib/constants';
+import postgresClient from '../../util/postgresClient';
 import BaseLogger from '../logging/BaseLogger';
 import ConsoleLogger from '../logging/ConsoleLogger';
 import SettingsManager from '../managers/SettingsManager';
-import postgresClient from '../util/postgresClient';
 
 declare module 'discord-akairo' {
     interface AkairoClient {
@@ -23,13 +24,13 @@ export default class AtlantisClient extends AkairoClient {
 
     public commandHandler: CommandHandler = new CommandHandler(this, {
         directory: join(__dirname, '..', 'commands'),
-        prefix: process.env.DEFAULT_PREFIX, // Change to PrefixSupplier
+        prefix: CLIENT_OPTIONS.DEFAULT_PREFIX, // Change to PrefixSupplier
         aliasReplacement: /-/g,
         handleEdits: true,
         commandUtil: true,
         defaultCooldown: 3000,
-        ignoreCooldown: process.env.OWNERS,
-        ignorePermissions: process.env.OWNERS,
+        ignoreCooldown: CLIENT_OPTIONS.OWNERS,
+        ignorePermissions: CLIENT_OPTIONS.OWNERS,
         argumentDefaults: {
             prompt: {
                 modifyStart: (_, str) => MESSAGES.COMMAND_HANDLER.PROMPT.MODIFY_START(str),
@@ -49,7 +50,7 @@ export default class AtlantisClient extends AkairoClient {
     public constructor() {
         // Initialize Client
         super(
-            { ownerID: process.env.OWNERS },
+            { ownerID: CLIENT_OPTIONS.OWNERS },
             {
                 messageCacheMaxSize: 1000,
                 disableEveryone: true,
@@ -65,7 +66,7 @@ export default class AtlantisClient extends AkairoClient {
     }
 
     public async start() {
-        // await this._init();
+        await this._init();
         this.login(process.env.BOT_TOKEN);
     }
 

@@ -1,5 +1,5 @@
-import { createLogger, format, Logger } from 'winston';
-const { combine, timestamp, label, prettyPrint } = format;
+import {createLogger, format, Logger} from 'winston';
+const {combine, timestamp, label, prettyPrint} = format;
 
 export default class BaseLogger {
     public loggerName: string;

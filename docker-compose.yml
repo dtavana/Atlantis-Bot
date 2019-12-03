@@ -12,7 +12,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
     environment:
-      POSTGRES_DB: TGBL-API
+      POSTGRES_DB: AtlantisBot
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
 volumes:
