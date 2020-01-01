@@ -1,5 +1,7 @@
 import {AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler} from 'discord-akairo';
 import {join} from 'path';
+import pgPromise from 'pg-promise';
+import pg from 'pg-promise/typescript/pg-subset';
 import {MESSAGES} from '../../lib/constants';
 import {CLIENT_OPTIONS} from '../../lib/constants';
 import postgresClient from '../../util/postgresClient';
@@ -9,7 +11,7 @@ import SettingsManager from '../managers/SettingsManager';
 
 declare module 'discord-akairo' {
     interface AkairoClient {
-        db;
+        db: pgPromise.IDatabase<any>;
         commandHandler: CommandHandler;
         loggers: BaseLogger[];
         sendLog: (payload: string) => void;
@@ -63,7 +65,7 @@ export default class AtlantisClient extends AkairoClient {
         for (const logger of this.loggers) {
             logger.sendLog(payload);
         }
-    }
+    };
 
     public async start() {
         await this._init();
