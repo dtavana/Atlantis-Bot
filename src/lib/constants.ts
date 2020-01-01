@@ -12,8 +12,7 @@ export const MESSAGES = {
         LOADED: 'Command Handler has been loaded!',
     },
     EVENTS: {
-        // @ts-ignore
-        READY: (client: AkairoClient) => `Now logged in as ${client.user.tag} (${client.user.id}). Serving ${client.users.size} users.`,
+        READY: (client: AkairoClient) => `Now logged in as ${client.user!.tag} (${client.user!.id}). Serving ${client.users.size} users.`,
     },
     INHIBITOR_HANDLER: {
         LOADED: 'Inhibitor Handler has been loaded!',
@@ -24,20 +23,45 @@ export const MESSAGES = {
     SETTINGS_MANAGER: {
         LOADED: 'Settings manager has been loaded!',
     },
+    COMMANDS: {
+        RUN: {
+            CUSTOM_GAMEMODE: 'Custom Gamemode',
+        },
+    },
 };
 
 export const COMMAND_CATEGORIES = {
-    MOD: 'mod',
+    HOST: 'host',
+    ADMIN: 'admin',
     MISC: 'misc',
 };
 
 export const ROLE_IDS = {
-    MOD: '651499746409578496',
+    HOST: '661958666852892713',
+    ADMIN: '651499746409578496',
+};
+
+export const CHANNEL_IDS = {
+    MOD_LOG: '651508306636177441',
 };
 
 export const CLIENT_OPTIONS = {
     DEFAULT_PREFIX: 'a!',
     OWNERS: [
         '112762841173368832',
+    ],
+};
+
+export const EMOJIS = {
+    NUMBERS: [
+        ':one:',
+        ':two:',
+        ':three:',
+        ':four:',
+        ':five:',
+        ':six:',
+        ':seven:',
+        ':eight:',
+        ':nine:',
     ],
 };
