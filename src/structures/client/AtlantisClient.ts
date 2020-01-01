@@ -65,7 +65,7 @@ export default class AtlantisClient extends AkairoClient {
         for (const logger of this.loggers) {
             logger.sendLog(payload);
         }
-    };
+    }
 
     public async start() {
         await this._init();
